@@ -12,5 +12,5 @@ def cli(keyword, message):
 
 def lgtm(keyword, message):
     with get_image(keyword) as fp:
-        savw_with_message(fp, message)
-        
+        save_with_message(fp, message)
+
