@@ -27,8 +27,10 @@ test:
 
 workflows:
   version: 2
+  build_and_test:
   all:
     jobs:
+      - build
       - setup_dependencies
       - test:
           requires:
