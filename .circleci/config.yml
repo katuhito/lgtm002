@@ -25,9 +25,9 @@ test:
         command: |
           python3 -m unittest -v
 
-workflow:
+workflows:
   version: 2
-  test:
+  all:
     jobs:
       - setup_dependencies
       - test:
