@@ -1,6 +1,6 @@
 test:
   docker:
-    - image: circleci/python:3.8.1
+    - image: circleci/python:3.8.4
   steps:
     - checkout
     - restore_cache:
