@@ -30,4 +30,6 @@ workflows:
   all:
     jobs:
       - setup_dependencies
-      - requires: setup_dependencies
+      - test:
+          requires:
+            - setup_dependencies
