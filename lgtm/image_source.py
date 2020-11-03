@@ -10,6 +10,7 @@ class LocalImage:
         return open(self._path, 'rb')
 
 class RemoteImage:
+    """URLから画像を取得する"""
     def __init__(self, path):
         self._url = path
     
@@ -28,7 +29,7 @@ class _LoremFlickr(RemoteImage):
         super().__init__(self._build_url(keyword))
     
     def _build_url(self, keyword):
-        return(f'{self.LOREM_FLICKR_URL}/' f'{self.WIDTH}/{self.HEIGHT}/{keyword}')
+        return(f'{self.LOREM_FLICKR_URL}/'f'{self.WIDTH}/{self.HEIGHT}/{keyword}')
 
 KeywordImage = _LoremFlickr
 
@@ -36,10 +37,12 @@ def ImageSource(keyword):
     """最適なイメージソースクラスを返す"""
     if keyword.startswith(('http://', 'https://')):
         return RemoteImage(keyword)
+    elif Path(keyword).exists():
+        return LocalImage(keyword)
     else:
         return KeywordImage(keyword)
 
 def get_image(keyword):
     """画像フェイルのオブジェクトを返す"""
     return ImageSource(keyword).get_image()
-    
+
