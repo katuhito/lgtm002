@@ -1,4 +1,4 @@
-from PIL import Image, ImageDraw,ImageFont
+from PIL import Image, ImageDraw, ImageFont
 
 MAX_RATIO = 0.8
 FONT_MAX_SIZE = 256
@@ -8,7 +8,7 @@ FONT_NAME = '/Library/Fonts/Arial Bold.ttf'
 FONT_COLOR_WHITE = (255, 255, 255, 0)
 
 OUTPUT_NAME = 'output.png'
-OUTPUT_FOMAT = 'PNG'
+OUTPUT_FORMAT = 'PNG'
 
 def save_with_message(fp, message):
     image = Image.open(fp)
@@ -20,8 +20,8 @@ def save_with_message(fp, message):
     for font_size in range(FONT_MAX_SIZE, FONT_MIN_SIZE, -1):
         font = ImageFont.truetype(FONT_NAME, font_size)
         text_width, text_height = draw.textsize(message, font=font)
-        w = message_area_width -text_width
-        h = message_area_height -text_height
+        w = message_area_width - text_width
+        h = message_area_height - text_height
 
         if w > 0 and h > 0:
             position = ((image_width -text_width) / 2, (image_height - text_height) / 2)
@@ -29,5 +29,5 @@ def save_with_message(fp, message):
             break
     
     image.save(OUTPUT_NAME, OUTPUT_FORMAT)
-    
+
 
